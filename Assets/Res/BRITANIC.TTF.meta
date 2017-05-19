@@ -1,0 +1,27 @@
+fileFormatVersion: 2
+guid: 15a316bd1c0487b4098a2e98d63ea8a9
+timeCreated: 1450848939
+licenseType: Pro
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 0
+  fontName: Britannic Bold
+  fontNames:
+  - Microsoft YaHei
+  - Arial
+  - Droid Sans Fallback
+  - Droid Sans
+  - Heiti SC
+  - Helvetica
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3f51104f6e5630b479113c9d6139c981, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: assets/res/britanic.ttf.ab
+  assetBundleVariant: 
