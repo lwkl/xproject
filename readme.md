@@ -1,39 +1,44 @@
-#XProject指南
-
-
 ##XProject解决什么问题？
 
-XProject是解决，打包，网络更新，装载,部署的一整套方案。
+XProject是解决，打包，网络更新，装载，部署的一套方案框架。
 
-如果你需要一套能热更使用lua的unity的简要框架，并且已经解决了发布等杂七杂八乱七八糟的事情，这就是你要的。
+如果你需要一套能热更使用lua的unity的简要框架，并且已经解决了发布等乱七八糟的事情，这就是你要的。
 
-XProject屏蔽编辑器和各个版本差异的装载，开发期直接使用，运行期会使用bundle
+XProject屏蔽编辑器和各个版本差异的装载，开发期直接使用装载编辑资源，运行期会使用bundle
 比较典型的一个函数搞定的方式如下
 
 XDesc desc = XLoad.load( string res, Type tp, Action<XDesc> complete )
 ( 参考以前Resource.Load--就是他的异步变种版 )
+
 接口定义成 即可以XDesc可以协程， 也可以使用complete完成可以回调
+
 资源XAssetInfo内存中只有一份，不用时候可以用unload进行卸载
+
 当XBundleInfo的资源没有hold住XAssetInfo的时候。会根据时间unload包
 
 XProject使slua, unity5.5.2f1 其他版本请自行转换
 XProject 直接可以服务端http部署，客户端根据ver.json配置更新到任意版本
 
 
-##简单使用约定
-使用约定
+##使用约定
 
 所有可更新资源放置于Assets/Res下
 
-Lua位于Assets/../lua目录，在打包时，会对应拷贝生成至Assets/Res目录下
+Lua位于Assets/../lua目录，在打包时，会对应拷贝或生成至Assets/Res目录下
 
 XLoading管理进度条，默认会有Assets/Res/progress/style1.prefab 资源基础进度条
 
 UIRoot为根名，必须拥有 back底层 window窗口层 msgbox弹框层 progress进度条
 
+##LUAJIT
+
+使用luajit2.1beta3 **解决全平台luajit字节码生成问题**，生成执行源码在build目录下
+
+文件夹jit目录有build生成的平台文件，如果OSX没有执行权限报错，请cd jit目录 chmod -R 777 *
 
 
 ##打包部分
+
 代码存在于Plagins/XPack/Editor目录
 
 点击发布设定
@@ -63,7 +68,6 @@ DirFiles 将目录中类型文件单个打包
 ![3.png](md/3.png)
  
 使用一键发布即可发布
-
 
 
 ##服务端部署
@@ -97,14 +101,14 @@ DirFiles 将目录中类型文件单个打包
 forceLoadAB，默认情况下装载直接同步装载资源，如果该参数标志为true，需要有资源，打包后使用。
 则进行装载pc的包异步进行测试，该步骤可用于模拟测试手机上的情况
 
-##LUAJIT
 
-使用luajit2.1beta3 **解决全平台luajit字节码生成问题**，生成执行源码在build目录下
-
-文件夹jit目录有build生成的平台文件，如果OSX没有执行权限报错，请cd jit目录 chmod -R 777 *
 
 
 ## 参考
+
 luajit2.1 beta3 http://luajit.org/download.html
+
 slua https://github.com/pangweiwei/slua
+
 slua ldb https://github.com/jiangzhhhh/ldb
+
