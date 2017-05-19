@@ -1,8 +1,8 @@
 ##XProject解决什么问题？
 
-XProject是解决，打包，网络更新，装载，部署的一套方案框架。
+XProject解决**打包**，**网络更新/切换版本**，**统一装载流程**，**部署版本** 的一套方案框架。
 
-如果你需要一套能热更使用lua的unity的简要框架，并且已经解决了发布等乱七八糟的事情，这就是你要的。
+如果你需要一套能热更使用lua的unity的简要框架，并且已经解决了发布时候将要解决的乱七八糟的事情，这就是你要的。
 
 XProject屏蔽编辑器和各个版本差异的装载，开发期直接使用装载编辑资源，运行期会使用bundle
 比较典型的一个函数搞定的方式如下
@@ -12,12 +12,13 @@ XDesc desc = XLoad.load( string res, Type tp, Action<XDesc> complete )
 
 接口定义成 即可以XDesc可以协程， 也可以使用complete完成可以回调
 
-资源XAssetInfo内存中只有一份，不用时候可以用unload进行卸载
+资源XAssetInfo内存中只有一份，不用时候可以用unload进行卸载（可以配合缓存XPoolManager清理！）
 
 当XBundleInfo的资源没有hold住XAssetInfo的时候。会根据时间unload包
 
 XProject使slua, unity5.5.2f1 其他版本请自行转换
-XProject 直接可以服务端http部署，客户端根据ver.json配置更新到任意版本
+
+直接可以将publish目录拷贝至http完成部署，客户端根据ver.json配置更新到任意版本
 
 
 ##使用约定
@@ -96,8 +97,7 @@ DirFiles 将目录中类型文件单个打包
     public static bool isRemoteLog = false;
     }
 
-
-这里根据固定参数进行更新，没啥不同
+客户端读次配置进行更新（编辑状态有一些方便的更改）
 forceLoadAB，默认情况下装载直接同步装载资源，如果该参数标志为true，需要有资源，打包后使用。
 则进行装载pc的包异步进行测试，该步骤可用于模拟测试手机上的情况
 
