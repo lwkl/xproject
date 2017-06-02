@@ -1,4 +1,4 @@
-##XProject解决什么问题？
+## XProject解决什么问题？
 
 XProject解决**打包**，**网络更新/切换版本**，**统一装载流程**，**部署版本** 的一套方案框架。
 
@@ -21,7 +21,7 @@ XProject使slua, unity5.5.2f1 其他版本请自行转换
 直接可以将publish目录拷贝至http完成部署，客户端根据ver.json配置更新到任意版本
 
 
-##使用约定
+## 使用约定
 
 所有可更新资源放置于Assets/Res下
 
@@ -31,14 +31,14 @@ XLoading管理进度条，默认会有Assets/Res/progress/style1.prefab 资源�
 
 UIRoot为根名，必须拥有 back底层 window窗口层 msgbox弹框层 progress进度条
 
-##LUAJIT
+## LUAJIT
 
 使用luajit2.1beta3 **解决全平台luajit字节码生成问题**，生成执行源码在build目录下
 
 文件夹jit目录有build生成的平台文件，如果OSX没有执行权限报错，请cd jit目录 chmod -R 777 *
 
 
-##打包部分
+## 打包部分
 
 代码存在于Plagins/XPack/Editor目录
 
@@ -48,7 +48,7 @@ UIRoot为根名，必须拥有 back底层 window窗口层 msgbox弹框层 progre
 
 ![2.png](md/2.png)
  
-##配置说明
+## 配置说明
 **Version**，表示本次打包使用版本号。在运行时用于对比客户端和远程上使用版本是否一致（通过对应平台目录下ver.json和本地
 version.json进行比较），如果不同则启动更新程序比较当前客户端启动下载列表更新到此版本。
 **Exe**, 表示生成exe名称
@@ -71,7 +71,7 @@ DirFiles 将目录中类型文件单个打包
 使用一键发布即可发布
 
 
-##服务端部署
+## 服务端部署
 
 服务端部署根据WebPublishUrl填的名称，将真个publish展开拷贝，部署在对应的服务端，可以根据平台下面的ver.json随意切换版本。
 客户端使用版本
